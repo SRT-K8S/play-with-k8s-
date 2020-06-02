@@ -27,7 +27,7 @@ https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/
    
 5. Create an IAM user/role with Route53, EC2, IAM and S3 full access
 
-	Go To IAM--> create a Role ----> select EC2 ---> Select EC2 FULL ACCESS , S3 FULL ACCESS , IAM FULL ACCESS , Route53 	FULL ACCESS
+	Go To IAM--> create a Role ----> select EC2 ---> Select EC2 FULL ACCESS , S3 FULL ACCESS , IAM FULL ACCESS , Route53 FULL ACCESS
 	
 6. Attach IAM role to ubuntu server
 
@@ -59,7 +59,7 @@ https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/
    
 12.Create kubernetes cluster definitions on S3 bucket
 
-	# kops create cluster --cloud=aws --zones=ap-southeast-1b --name=qa.srttraining.online --dns-	zone=srttraining.online --dns private
+	# kops create cluster --cloud=aws --zones=ap-southeast-1b --name=qa.srttraining.online --dns-zone=srttraining.online --dns private
    
 13.Create kubernetes cluser
 
