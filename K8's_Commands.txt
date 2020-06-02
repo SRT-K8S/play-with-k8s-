@@ -19,11 +19,11 @@
 4. Install kubectl ( Kubectl interact with cluster to manage )
 
 	#curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s 
-	https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
    
-	 #chmod +x ./kubectl         -761
+	#chmod +x ./kubectl 
    
-	 #sudo mv ./kubectl /usr/local/bin/kubectl
+	#sudo mv ./kubectl /usr/local/bin/kubectl
    
 5. Create an IAM user/role with Route53, EC2, IAM and S3 full access
 
@@ -47,11 +47,11 @@
 
 	# create an S3 bucket
 
-	# aws s3 mb s3://Prod.srttraining.online
+	# aws s3 mb s3://qa.srttraining.online
    
 10.Expose environment variable:
 
-	# export KOPS_STATE_STORE=s3://Prod.srttraining.online
+	# export KOPS_STATE_STORE=s3://qa.srttraining.online
    
 11.Create sshkeys before creating cluster
    
@@ -59,11 +59,11 @@
    
 12.Create kubernetes cluster definitions on S3 bucket
 
-	# kops create cluster --cloud=aws --zones=ap-southeast-1b --name=prod.srttraining.online --dns-	zone=srttraining.online 	--dns private
+	# kops create cluster --cloud=aws --zones=ap-southeast-1b --name=qa.srttraining.online --dns-	zone=srttraining.online --dns private
    
 13.Create kubernetes cluser
 
-	# kops update cluster Prod.srttraining.online --yes
+	# kops update cluster qa.srttraining.online --yes
    
 14.Add the api.internal IP to vi /etc/hosts
 
@@ -81,18 +81,18 @@
 
 	# Deploying Nginx Container
 
-	kubectl run sample-nginx --image=nginx --replicas=2 --port=80
+	#kubectl run sample-nginx --image=nginx --replicas=2 --port=80
 
-	kubectl get pods
+	#kubectl get pods
 
-	kubectl get deployments
+	#kubectl get deployments
 
 18.Expose the deployment as service. This will create an ELB in front of those 2 containers and allow us to publicly access them
 
-	kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
+	#kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
 
-	kubectl get services -o wide
+	#kubectl get services -o wide
 
 19.To delete cluster
 
-	kops delete cluster Prod.srttraining.online --yes
+	#kops delete cluster qa.srttraining.online --yes
